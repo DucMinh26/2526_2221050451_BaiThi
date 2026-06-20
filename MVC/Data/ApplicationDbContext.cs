@@ -12,5 +12,6 @@ namespace MVC.Data
         }
 
         public DbSet<PhongBan> PhongBans { get; set; }
+        public DbSet<NhanVien> NhanViens { get; set; }
     }
 }
