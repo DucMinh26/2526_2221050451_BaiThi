@@ -1,4 +1,4 @@
-@model IEnumerable<MVC.Models.Entities.NhanVien>
+@model IEnumerable<MVC.Models.ViewModels.NhanVienPhongBanVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,29 +13,36 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TenNhanVien)
+                @Html.DisplayNameFor(model => model.MaPhongBan)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaPhongBan)
+                @Html.DisplayNameFor(model => model.TenPhongBan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaNhanVien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNhanVien)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenNhanVien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaPhongBan)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MaNhanVien">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaNhanVien">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaNhanVien">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNhanVien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaPhongBan)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MaNhanVien">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.MaNhanVien">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.MaNhanVien">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

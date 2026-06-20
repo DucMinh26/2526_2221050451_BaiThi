@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC.Data;
 using MVC.Models.Entities;
+using MVC.Models.ViewModels;
 
 namespace MVC.Controllers
 {
@@ -22,7 +23,18 @@ namespace MVC.Controllers
         // GET: NhanVien
         public async Task<IActionResult> Index()
         {
-            return View(await _context.NhanViens.ToListAsync());
+            var result = await _context.NhanViens
+                .Include(n => n.PhongBan)
+                .Select(s => new NhanVienPhongBanVM
+                {
+                    MaPhongBan = s.MaPhongBan,
+                    TenPhongBan = s.PhongBan.TenPhongBan,
+                    MaNhanVien = s.MaNhanVien,
+                    TenNhanVien = s.TenNhanVien
+                })
+                .ToListAsync();
+
+            return View(result);
         }
 
         // GET: NhanVien/Details/5
