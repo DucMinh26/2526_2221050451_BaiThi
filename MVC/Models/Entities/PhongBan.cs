@@ -8,5 +8,6 @@ namespace MVC.Models.Entities
         public string MaPhongBan{get;set;}
         [Required]
         public string? TenPhongBan{get;set;}
+        public ICollection<NhanVien> NhanViens{get;set;}
     }
 }
